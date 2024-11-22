@@ -1,0 +1,31 @@
+.header {
+    background-color: #364891;
+    display: flex;
+    align-items: center;
+}
+
+.searchBar{
+  width: max-content;
+  align-items: center;
+  display: flex;
+  padding: 20px;
+  border-radius: 28px;
+  background: #364891;
+  transition: box-shadow 0.2s;
+}
+
+.searchBar:focus-within {
+  box-shadow: 0 0 5px rgba(0,0,0,0,0);
+}
+
+.search-input {
+  font-size: 20px;
+  font-family: "Tiny5", serif;
+  font-weight: 400;
+  font-style: normal;
+  color: black;
+  margin-left: 20px;
+  width: 800px;
+  outline: none;
+
+}
