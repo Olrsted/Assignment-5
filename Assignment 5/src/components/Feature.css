@@ -1,0 +1,26 @@
+.Featured{
+    text-align: center;
+    font-size: 40px;
+    background-color: antiquewhite;
+    font-family: "Tiny5", serif;
+    font-weight: 100;
+    font-style: initial;
+    color:brown
+  }
+  
+  .movies{
+    padding: 3rem;
+    text-align: center;
+  }
+  
+  .movies img{
+     width: 200px;
+     height: 300px;
+     padding: 10px;
+     right: 30px;
+     transition: transform 0.3s ease;
+  }
+  .movies img:hover{
+      transform: scale(1.05);
+      border: #24262b;
+   }
