@@ -1,4 +1,4 @@
-import "./MovieView.css";
+import "./MoviesView.css";
 import Header from "../components/Header";
 import Genre from "../components/Genre";
 import Footer from "../components/Footer";
