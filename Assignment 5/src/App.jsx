@@ -1,10 +1,10 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import HomeView from "./views/HomeView";
-import LoginView from "./views/LoginView";
-import RegisterView from "./views/RegisterView";
-import MovieView from "./views/MovieView";
-import GenreView from "./views/GenreView";
-import DetailView from "./views/DetailView";
+import HomeView from "./Views/HomeView";
+import LoginView from "./Views/LoginView";
+import RegisterView from "./Views/RegisterView";
+import MovieView from "./Views/MovieView";
+import GenreView from "./Views/GenreView";
+import DetailView from "./Views/DetailView";
 
 import './App.css'
 

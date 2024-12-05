@@ -23,8 +23,8 @@ function Header() {
 
   return (
     <div className="header">
-      <div className="logo">
-        <img src="logo" alt="pixlogo" className="logo-image" />
+      <div className="Logo">
+        <img src={logo} alt="pixlogo" className="logo-image" />
       </div>
 
         <div className="SignButtons">
