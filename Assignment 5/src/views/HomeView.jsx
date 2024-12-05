@@ -1,19 +1,18 @@
 import "./HomeView.css";
-import Header from "../components/Header";
-import Hero from "../components/Hero";
-import Feature from "../components/Feature";
-import Footer from "../components/Footer";
+import Header from "../components/Header.jsx";
+import Hero from "../components/Hero.jsx";
+import Feature from "../components/Feature.jsx";
+import Footer from "../components/Footer.jsx";
 
 function HomeView() {
-
-    return (
-        <div>
-            <Header />
-            <Hero />
-            <Feature />
-            <Footer />
-        </div>
-    )
+  return (
+    <div className="home">
+      <Header />
+      <Hero />
+      <Feature />
+      <Footer />
+    </div>
+  )
 }
 
 export default HomeView;

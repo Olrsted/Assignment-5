@@ -1,7 +1,7 @@
 import "./Header.css";
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import { useNavigate, useLocation } from 'react-router-dom';
-import logo from "../components/netPix logo.png";
+import logo from "../images/netPix logo.png";
 
 
 function Header() {

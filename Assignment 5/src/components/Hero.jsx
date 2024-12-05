@@ -1,5 +1,5 @@
 import "./Hero.css";
-import hero from "../components/HeroBG.png"
+import hero from "../images/HeroBG.png"
 import { useEffect, useState } from 'react';
 import { Link } from "react-router-dom";
 
@@ -18,3 +18,5 @@ function Hero() {
 
     )
 }
+
+export default Hero;

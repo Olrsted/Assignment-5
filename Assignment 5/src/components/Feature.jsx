@@ -3,3 +3,4 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Feature.css";
 
+export default Feature;

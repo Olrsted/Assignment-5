@@ -1,30 +1,33 @@
-import { Outlet, useNavigate } from "react-router-dom";
-import { useStoreContext } from "../context";
-import "./MoviesView.css";
+import "./MovieView.css";
+import Header from "../components/Header";
+import Genre from "../components/Genre";
+import Footer from "../components/Footer";
+import { Outlet } from "react-router-dom";
 
-function MoviesView() {
+function MovieView() {
+    const genres = [
+        { id: 28, genre: 'Action' },
+        { id: 12, genre: 'Adventure' },
+        { id: 16, genre: 'Animation' },
+        { id: 80, genre: 'Comedy' },
+        { id: 18, genre: 'Drama' },
+        { id: 36, genre: 'Horror' },
+        { id: 9648, genre: 'Mystery' },
+        { id: 10749, genre: 'Romance' },
+        { id: 53, genre: 'Thriller' },
+        { id: 37, genre: 'Western' }
+      ];
 
-  const navigate = useNavigate();
-  const { email } = useStoreContext();
-
-  function logout() {
-    navigate("/");
-  }
-
-  function cart() {
-    navigate("/cart")
-  }
-
-  return (
-    <div className="app-container">
-      <div className="header">
-        <h1>{`Welcome, ${email}!`}</h1>
-        <button onClick={() => cart()} className="logout-button">Cart</button>
-        <button onClick={() => logout()} className="logout-button">Logout</button>
-      </div>
-      <Outlet />
-    </div>
-  );
+    return (
+        <div>
+            <Header />
+            <div className="middle-container">
+                <Genre genreList={genres} />
+                <Outlet />
+            </div>
+            <Footer />
+        </div>
+    )
 }
 
-export default MoviesView;
+export default MovieView;
