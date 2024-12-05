@@ -24,7 +24,6 @@ const Footer = () => {
         <div className="footerNav">
           <ul>
             <li><a href="">Home</a></li>
-            <li><a href="https://cp24.com/">News</a></li>
             <li><a href="https://www.netflix.com">About</a></li>
             <li><a href="https://www.gmail.com/">Contact Us</a></li>
             <li><a href="https://www.tdsb.on.ca/library/">Our Team</a></li>
