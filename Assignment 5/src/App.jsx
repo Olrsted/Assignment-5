@@ -1,8 +1,8 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import HomeView from "./Views/HomeView";
-import LoginView from "./Views/LoginView";
+import HomeView from "./views/HomeView";
+import LoginView from "./views/LoginView";
 import RegisterView from "./views/RegisterView";
-import MovieView from "./views/MoviesView";
+import MovieView from "./views/MovieView";
 import GenreView from "./views/GenreView";
 import DetailView from "./views/DetailView";
 
