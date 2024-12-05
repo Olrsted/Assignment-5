@@ -30,4 +30,4 @@ function MovieView() {
     )
 }
 
-export default MovieView;
+export default MoviesView;
