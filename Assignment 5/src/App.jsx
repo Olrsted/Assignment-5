@@ -1,18 +1,31 @@
-import React from 'react'
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import HomeView from "./views/HomeView";
+import LoginView from "./views/LoginView";
+import RegisterView from "./views/RegisterView";
+import MovieView from "./views/MovieView";
+import GenreView from "./views/GenreView";
+import DetailView from "./views/DetailView";
+
 import './App.css'
-import Feature from './components/Feature'
-import Footer from './components/Footer'
-import Header from './components/Header'
-import Hero from './components/Hero'
 
 function App() {
+
   return (
-    <div className="container">
-      <Header />
-      <Hero />
-      <Feature />
-      <Footer />
-    </div>
+    <>
+      <BrowserRouter>
+        <Routes>
+          <Route path="" element={<HomeView />} />
+          <Route path="/register" element={<RegisterView />} />
+          <Route path="/login" element={<LoginView />} />
+          <Route path="/movie" element={<MovieView />}>
+            <Route path="genre/:id" element={<GenreView />} />
+            <Route path="details/:id" element={<DetailView />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
+
+    </>
+
   )
 }
 

@@ -1,16 +1,45 @@
-import { useState } from 'react';
+import "./Header.css";
+import '@fortawesome/fontawesome-free/css/all.min.css';
+import { useNavigate, useLocation } from 'react-router-dom';
+import logo from "../components/netPix logo.png";
 
-<div className="header">
-    <img src="netPix Logo.png" alt="pixlogo" width="200" height="65">
-{/* <!-- sign buttons --> */}
-    <button class="In">Sign in</button>
-    <button class="Up">Sign up</button>
-{/* <!-- search bar --> */}
-<form>
-  <div className="searchBar">
-    {/* < input type="search-input" id="search" placeholder="Search Title" > */}
-    <span className="search-icon material-symbols-outlined">search</span>
-  </div>
-</form>
 
-</div>
+function Header() {
+  const navigate = useNavigate();
+  const location = useLocation();
+  const isActive = (path) => location.pathname === path;
+
+  function homePage() {
+      navigate(`/`);
+  }
+
+  function loginPage() {
+      navigate(`/login`);
+  }
+
+  function registerPage() {
+      navigate(`/register`);
+  }
+
+  return (
+    <div className="header">
+      <div className="logo">
+        <img src="logo" alt="pixlogo" className="logo-image" />
+      </div>
+
+        <div className="SignButtons">
+          <button className="Up" onClick={() => { registerPage() }}> Sign Up</button>
+          <button className="In" onClick={() => { loginPage() }}>Sign In</button>
+        </div>
+  `   <div className="search-bar">
+        <form aria-label="Search the site">
+          <input className="search-input" type="search" placeholder="Search..." />
+          <button type="submit" aria-label="Search">
+            <i className="search-icon fa fa-search"></i>
+          </button>
+        </form>
+      </div>`
+    </div>
+  )
+}
+export default Header;
