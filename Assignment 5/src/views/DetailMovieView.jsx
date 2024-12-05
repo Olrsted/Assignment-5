@@ -1,65 +1,69 @@
-import axios from "axios";
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { useStoreContext } from "../context";
-import "./DetailMovieView.css"
+import axios from "axios";
+import "./DetailMovieView.css";
 
-function DetailMovieView() {
-
-  const [movie, setMovie] = useState([]);
-  const { cart, setCart } = useStoreContext();
-  const params = useParams();
+function DetailView() {
+  const { id } = useParams();
+  const [movie, setMovie] = useState();
+  const [trailers, setTrailers] = useState([]);
 
   useEffect(() => {
-    (async function getMovie() {
-      const response = await axios.get(
-        `https://api.themoviedb.org/3/movie/${params.id}?api_key=${import.meta.env.VITE_TMDB_KEY}&append_to_response=videos`
+    async function fetchMovieDetails() {
+      const movieResponse = await axios.get(
+        `https://api.themoviedb.org/3/movie/${id}?api_key=${import.meta.env.VITE_TMDB_KEY}`
       );
-      setMovie(response.data);
-    })();
-  }, []);
+      setMovie(movieResponse.data);
+
+      const videosResponse = await axios.get(
+        `https://api.themoviedb.org/3/movie/${id}/videos?api_key=${import.meta.env.VITE_TMDB_KEY}`
+      );
+      setTrailers(videosResponse.data.results.filter((video) => video.type === "Trailer"));
+    }
+
+    fetchMovieDetails();
+  }, [id]);
 
   return (
-    <div className="movie-detail">
-      <button onClick={() => setCart((prevCart) => prevCart.set(params.id, { title: movie.original_title, url: movie.poster_path }))} className="buy-button">Buy</button>
-      <h1 className="movie-title">{movie.original_title}</h1>
-      <p className="movie-overview">{movie.overview}</p>
-      <div className="movie-info">
-        <p><strong>Release Date:</strong> {movie.release_date}</p>
-        <p><strong>Runtime:</strong> {movie.runtime} minutes</p>
-      </div>
-      {movie.poster_path && (
-        <img
-          className="movie-poster"
-          src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-          alt={movie.original_title}
-        />
-      )}
+    <div className="detail-view-container">
+      {movie ? (
+        <div>
+          <h1>{movie.title}</h1>
+          <img
+            src={`https://image.tmdb.org/t/p/w300/${movie.poster_path}`}
+            alt={movie.title}
+            className="detail-view-poster"
+          />
+          <button className="add-to-cart-button">
+            Watch Now
+          </button>
+          <p className="detail-info"><span>Overview:</span>{movie.overview}</p>
+          <p className="detail-info"><span>Release Date:</span> {movie.release_date}</p>
+          <p className="detail-info"><span>Rating:</span> {movie.vote_average}</p>
+          <p className="detail-info"><span>Genres:</span> {movie.genres.map((g) => g.name).join(", ")}</p>
+          <p className="detail-info"><span>Runtime:</span> {movie.runtime} minutes</p>
+          <p className="detail-info"><span>Language:</span> {movie.original_language}</p>
+          <p className="detail-info"><span>Revenue:</span> {movie.revenue}$</p>
 
-      {/* Trailers Section */}
-      <div className="trailers-section">
-        <h2>Trailers</h2>
-        <div className="trailers-grid">
-          {movie.videos && movie.videos.results.map((trailer) => (
-            <div key={trailer.id} className="trailer-tile">
-              <a
-                href={`https://www.youtube.com/watch?v=${trailer.key}`}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <img
-                  className="trailer-thumbnail"
-                  src={`https://img.youtube.com/vi/${trailer.key}/0.jpg`}
-                  alt={trailer.name}
-                />
-                <h3>{trailer.name}</h3>
-              </a>
+          {trailers.length > 0 && (
+            <div className="trailer-section">
+              <h3 className="trailer-text">Trailer:</h3>
+              <div>
+                <iframe
+                  src={`https://www.youtube.com/embed/${trailers[0].key}`}
+                  title={trailers[0].name}
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                ></iframe>
+              </div>
             </div>
-          ))}
+          )}
         </div>
-      </div>
+      ) : (
+        <p className="no-movie-selected">Select to view details</p>
+      )}
     </div>
-  )
+  );
 }
 
-export default DetailMovieView;
+export default DetailView;

@@ -4,7 +4,7 @@ import LoginView from "./views/LoginView";
 import RegisterView from "./views/RegisterView";
 import MovieView from "./views/MoviesView";
 import GenreView from "./views/GenreView";
-import DetailView from "./views/DetailView";
+import DetailView from "./views/DetailMovieView";
 
 import './App.css'
 
@@ -14,7 +14,7 @@ function App() {
     <>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<HomeView />} />
+          <Route path="" element={<HomeView />} />
           <Route path="/register" element={<RegisterView />} />
           <Route path="/login" element={<LoginView />} />
           <Route path="/movie" element={<MovieView />}>
